@@ -1,0 +1,87 @@
+<html lang="pt-br">
+<head>
+<title> Trabalho do mestrado </title>
+<meta charset="utf-8">
+
+<style>
+    .none{
+        display:none
+    }
+    #result {
+        font-weight: bold;
+        font-size: xx-large;
+        color:coral;
+            }
+   
+
+</style>
+</head>
+
+<body>
+
+<h1>Calculador de IMC</h1>    
+
+<form class="" id="form">
+    <label for="altu">Altura:</label>
+    <input type="text" nome="altura" id="altu" size="30" placeholder="Digite aqui sua altura em metros" autofocus/>
+    
+    <br>
+   
+    <label for="peso">Peso:</label>
+    <input type="text" nome="peso" id="peso" size="30" placeholder="Digite aqui seu peso em quilos"/>
+    <br>
+    <button type="button" id= "btn"> Calcular </button>
+
+</form>
+<div id= "container" class= "none">
+
+    <p id="result"></p>
+</div>
+
+<script>
+  
+    var btn= document.getElementById("btn")
+  
+
+    btn.addEventListener ("click",function click(e){
+        var a= document.getElementById("altu").value.replace (",",".")
+        var p= document.getElementById("peso").value
+        a= Number(a)
+        p= Number(p)
+        var url=""
+       
+       
+        var imc= (p/(a*a));
+
+        if (imc<18.5)
+     {
+         url ="abxpe.jpg"
+     }
+        else if (imc>= 18.5 && imc<=24.9)
+    {
+        url="pN.jpg"
+    }
+        else if (imc>25)
+    {
+        url="pA.jpg"
+    }
+       
+        var result= document.getElementById("result")
+        result.innerText= "O resultado do seu IMC é: " + imc.toFixed(2)
+        var form= document.getElementById("form")
+        form.classList.add("none")
+        var container= document.getElementById("container")
+        container.classList.remove("none")
+        var image= document.createElement("img")
+        image.setAttribute("src", url)
+        var div= document.getElementById("container")
+        div.appendChild(image)
+    })
+     
+    
+
+</script>
+
+  
+</body>
+</html>
